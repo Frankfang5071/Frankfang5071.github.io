@@ -3,208 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>个人主页 | Personal Homepage</title>
+    <title>方成 - 个人学术主页 | Fang Cheng - Academic Homepage</title>
     <style>
-        /* 全局样式重置与基础设置 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Times New Roman", Times, serif, "Microsoft YaHei";
+            font-family: "Times New Roman", "Microsoft YaHei", Arial, sans-serif;
         }
 
         body {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 40px 50px;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f9f9f9;
+            padding: 50px 60px;
+            background-color: #f8f9fa;
+            color: #212529;
+            line-height: 1.8;
         }
 
-        /* 语言切换按钮样式 */
-        .language-switch {
+        /* 语言切换按钮 */
+        .lang-switch {
             text-align: right;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         .lang-btn {
-            padding: 8px 16px;
-            margin-left: 10px;
-            border: 1px solid #666;
-            border-radius: 4px;
-            background-color: #fff;
+            padding: 10px 20px;
+            margin-left: 15px;
+            border: 1px solid #495057;
+            border-radius: 6px;
+            background: #fff;
+            color: #495057;
             cursor: pointer;
-            font-size: 14px;
-            transition: background-color 0.2s;
+            font-size: 16px;
+            transition: all 0.3s ease;
         }
 
         .lang-btn.active {
-            background-color: #333;
+            background: #495057;
             color: #fff;
-            border-color: #333;
         }
 
-        .lang-btn:hover:not(.active) {
-            background-color: #eee;
-        }
-
-        /* 头部基本信息样式 */
+        /* 基本信息 */
         .basic-info {
-            border-bottom: 2px solid #333;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
+            border-bottom: 2px solid #495057;
+            padding-bottom: 30px;
+            margin-bottom: 45px;
         }
 
         .basic-info h1 {
-            font-size: 28px;
-            margin-bottom: 10px;
+            font-size: 36px;
+            margin-bottom: 20px;
         }
 
-        .basic-info .sub-info {
-            font-size: 16px;
-            margin: 5px 0;
+        .basic-info p {
+            font-size: 18px;
+            margin: 10px 0;
         }
 
-        /* 各模块通用样式 */
+        /* 通用模块 */
         .section {
-            margin-bottom: 30px;
+            margin-bottom: 50px;
         }
 
         .section h2 {
-            font-size: 20px;
-            margin-bottom: 15px;
-            border-left: 5px solid #333;
-            padding-left: 10px;
+            font-size: 24px;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #dee2e6;
         }
 
         .section-content {
-            padding-left: 15px;
+            padding-left: 20px;
+            font-size: 17px;
         }
 
-        /* 技能模块样式 */
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 10px;
+        /* 技能/获奖模块 */
+        .skills, .awards {
+            margin-top: 20px;
         }
 
-        .skill-tag {
-            background-color: #eee;
-            padding: 5px 10px;
-            border-radius: 3px;
-            font-size: 14px;
+        .skill-category, .award-category {
+            margin: 15px 0;
+            font-weight: 600;
         }
 
-        /* 教育经历样式 */
-        .education-item {
-            margin-bottom: 10px;
+        .skill-list, .award-list {
+            list-style: disc;
+            margin-left: 30px;
+            margin-top: 8px;
         }
 
-        .education-item .time {
-            font-style: italic;
-            color: #666;
-            margin-left: 10px;
+        .skill-list li, .award-list li {
+            margin: 5px 0;
         }
 
-        /* 最后更新日期样式 */
+        /* 更新日期 */
         .update-date {
-            margin-top: 40px;
-            font-size: 14px;
-            color: #666;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #dee2e6;
             text-align: right;
-            border-top: 1px solid #eee;
-            padding-top: 10px;
+            font-size: 16px;
+            color: #6c757d;
         }
     </style>
 </head>
 <body>
     <!-- 语言切换按钮 -->
-    <div class="language-switch">
-        <button class="lang-btn active" id="cn-btn">中文</button>
+    <div class="lang-switch">
+        <button class="lang-btn active" id="zh-btn">中文</button>
         <button class="lang-btn" id="en-btn">English</button>
     </div>
 
-    <!-- 基本信息模块 -->
+    <!-- 基本信息（纯中文初始显示） -->
     <div class="basic-info">
-        <h1 data-lang="name">方成 <!-- 替换：你的中文姓名 --> | Frank Fang <!-- 替换：你的英文姓名 --></h1>
-        <p class="sub-info" data-lang="school">华东政法大学 商学院 会计学专业 <!-- 替换：中文学校/专业 --> | ECUPL, Business School, Accounting <!-- 替换：英文学校/专业 --></p>
-        <p class="sub-info" data-lang="direction">研究方向：司法会计方向 <!-- 替换：中文研究/职业方向 --> | Research Interests: Forensic Accounting <!-- 替换：英文研究/职业方向 --></p>
-        <p class="sub-info" data-lang="email">邮箱：123456FC@qq.com <!-- 替换：你的邮箱 --> | Email: 123456FC@qq.com <!-- 替换：你的邮箱（英文可与中文一致） --></p>
+        <h1 id="name">方成</h1>
+        <p id="school">华东政法大学 / 会计学专业（本科，2024级）</p>
+        <p id="direction">研究方向：司法会计</p>
+        <p id="email">邮箱：123FC@qq.com</p>
     </div>
 
-    <!-- 个人简介 + 技能模块 -->
+    <!-- 个人简介 + 技能 -->
     <div class="section">
-        <h2 data-lang="intro-title">个人简介 & 技能 <!-- 固定文字，无需替换 --> | About Me & Skills <!-- 固定文字，无需替换 --></h2>
+        <h2 id="intro-title">个人简介 & 专业技能</h2>
         <div class="section-content">
-            <p data-lang="intro-content">
-                我是华东政法大学的一名会计学专业本科生，扎根司法会计方向，具备初级会计资格的同等研究和执业能力，还负责过院级立项的文遗保护主题社会实践项目。 <!-- 替换：中文个人简介 -->
-                |
-                I am a graduate/undergraduate student in XX major at XX University, mainly engaged in research in the field of XX, with capabilities in XX, participated in XX projects, and familiar with XX technologies. <!-- 替换：英文个人简介 -->
+            <p id="intro-content">
+                本人为华东政法大学2024级会计学专业本科生，专注于司法会计领域的学习与研究，具备扎实的会计专业基础和法律相关知识储备，致力于将会计专业能力应用于司法实践场景。
             </p>
             <div class="skills">
-                <span class="skill-tag" data-lang="skill1">Python编程 <!-- 替换：中文技能1 --> | Python Programming <!-- 替换：英文技能1 --></span>
-                <span class="skill-tag" data-lang="skill2">机器学习 <!-- 替换：中文技能2 --> | Machine Learning <!-- 替换：英文技能2 --></span>
-                <span class="skill-tag" data-lang="skill3">数据分析 <!-- 替换：中文技能3 --> | Data Analysis <!-- 替换：英文技能3 --></span>
-                <!-- 可按需添加更多技能标签，复制上面一行即可 -->
+                <div class="skill-category" id="main-skill-title">主要技能：</div>
+                <ul class="skill-list">
+                    <li id="skill1">初级会计资格同等执业能力</li>
+                    <li id="skill2">英语六级584分</li>
+                </ul>
+                <div class="skill-category" id="additional-skill-title">附加技能：</div>
+                <ul class="skill-list">
+                    <li id="skill3">有较强视频剪辑能力</li>
+                    <li id="skill4">熟练运用Office软件</li>
+                </ul>
             </div>
         </div>
     </div>
 
-    <!-- 教育/课程经历模块 -->
+    <!-- 荣誉和获奖经历 -->
     <div class="section">
-        <h2 data-lang="edu-title">教育/课程经历 <!-- 固定文字，无需替换 --> | Education & Course Experience <!-- 固定文字，无需替换 --></h2>
+        <h2 id="award-title">荣誉和获奖经历</h2>
         <div class="section-content">
-            <div class="education-item">
-                <span data-lang="edu1">华东政法大学 会计学专业 本科 <!-- 替换：中文教育经历1 --></span>
-                <span class="time" data-lang="edu1-time">2024-2026 <!-- 替换：时间 --></span>
-                <span data-lang="edu1-en">Bachelor of ECUPL <!-- 替换：英文教育经历1 --></span>
+            <div class="awards">
+                <ul class="award-list">
+                    <li id="award1">2024-2025年度校三好学生荣誉称号</li>
+                    <li id="award2">2024-2025学年综合奖学金一等奖</li>
+                </ul>
             </div>
-            <div class="education-item">
-                <span data-lang="edu2">核心课程：财务会计学、管理会计学、税法 <!-- 替换：中文核心课程 --></span>
-                <span data-lang="edu2-en">Core Courses: Financial Accounting, Managerial Accounting, Tax Law <!-- 替换：英文核心课程 --></span>
-            </div>
-            <!-- 可按需添加更多教育/课程经历，复制上面的 education-item 块即可 -->
+        </div>
+    </div>
+
+    <!-- 教育/课程经历 -->
+    <div class="section">
+        <h2 id="edu-title">教育 & 课程经历</h2>
+        <div class="section-content">
+            <div class="education-item" id="course-title">核心课程：</div>
+            <ul class="skill-list">
+                <li id="course1">财务会计学</li>
+                <li id="course2">管理会计学</li>
+                <li id="course3">税法</li>
+            </ul>
         </div>
     </div>
 
     <!-- 最后更新日期 -->
-    <div class="update-date" data-lang="update-date">
-        最后更新：2026年3月9日 <!-- 替换：中文更新日期 --> | Last Updated: March 9, 2026 <!-- 替换：英文更新日期 -->
-    </div>
+    <div class="update-date" id="update-date">最后更新：2026.3.9</div>
 
     <script>
-        // 获取语言切换按钮和所有带翻译的元素
-        const cnBtn = document.getElementById('cn-btn');
+        // 核心：语言包分开存储，无任何中英文并列
+        const lang = {
+            // 纯中文文本库
+            zh: {
+                name: "方成",
+                school: "华东政法大学 / 会计学专业（本科，2024级）",
+                direction: "研究方向：司法会计",
+                email: "邮箱：123FC@qq.com",
+                intro_title: "个人简介 & 专业技能",
+                intro_content: "本人为华东政法大学2024级会计学专业本科生，专注于司法会计领域的学习与研究，具备扎实的会计专业基础和法律相关知识储备，致力于将会计专业能力应用于司法实践场景。",
+                main_skill_title: "主要技能：",
+                skill1: "初级会计资格同等执业能力",
+                skill2: "英语六级584分",
+                additional_skill_title: "附加技能：",
+                skill3: "有较强视频剪辑能力",
+                skill4: "熟练运用Office软件",
+                award_title: "荣誉和获奖经历",
+                award1: "2024-2025年度校三好学生荣誉称号",
+                award2: "2024-2025学年综合奖学金一等奖",
+                edu_title: "教育 & 课程经历",
+                course_title: "核心课程：",
+                course1: "财务会计学",
+                course2: "管理会计学",
+                course3: "税法",
+                update_date: "最后更新：2026.3.9"
+            },
+            // 纯英文文本库
+            en: {
+                name: "Cheng Fang",
+                school: "East China University of Political Science and Law / Accounting Major (Undergraduate, Class of 2024)",
+                direction: "Research Direction: Forensic Accounting",
+                email: "Email: 123FC@qq.com",
+                intro_title: "Personal Profile & Professional Skills",
+                intro_content: "I am an undergraduate student of Accounting major (Class of 2024) at East China University of Political Science and Law, focusing on the study and research of forensic accounting. I have a solid foundation in accounting and a reserve of legal knowledge, and am committed to applying accounting professional capabilities to judicial practice scenarios.",
+                main_skill_title: "Core Skills:",
+                skill1: "Professional competence equivalent to junior accounting qualification",
+                skill2: "CET-6 with a score of 584",
+                additional_skill_title: "Additional Skills:",
+                skill3: "Strong video editing ability",
+                skill4: "Proficient in using Office software",
+                award_title: "Honors and Awards",
+                award1: "Honorary Title of Merit Student of the University (2024-2025)",
+                award2: "First Class Comprehensive Scholarship (2024-2025 Academic Year)",
+                edu_title: "Education & Course Experience",
+                course_title: "Core Courses:",
+                course1: "Financial Accounting",
+                course2: "Management Accounting",
+                course3: "Tax Law",
+                update_date: "Last Updated: 2026.3.9"
+            }
+        };
+
+        // 获取按钮
+        const zhBtn = document.getElementById('zh-btn');
         const enBtn = document.getElementById('en-btn');
-        const langElements = document.querySelectorAll('[data-lang]');
+        // 获取所有需要切换的元素ID
+        const allElementIds = Object.keys(lang.zh);
 
-        // 语言切换逻辑
-        function switchLanguage(lang) {
-            // 更新按钮样式
-            cnBtn.classList.toggle('active', lang === 'cn');
-            enBtn.classList.toggle('active', lang === 'en');
-
-            // 遍历所有带翻译的元素，切换显示对应语言
-            langElements.forEach(element => {
-                const textContent = element.textContent;
-                const [cnText, enText] = textContent.split('|').map(t => t.trim());
-                
-                if (lang === 'cn') {
-                    element.textContent = cnText;
-                } else {
-                    element.textContent = enText;
+        // 核心切换函数：一键替换所有文本为目标语言
+        function switchToLanguage(targetLang) {
+            // 1. 更新按钮样式（直观显示当前语言）
+            zhBtn.classList.toggle('active', targetLang === 'zh');
+            enBtn.classList.toggle('active', targetLang === 'en');
+            
+            // 2. 遍历所有元素，替换为纯目标语言文本
+            allElementIds.forEach(elementId => {
+                const element = document.getElementById(elementId);
+                if (element) {
+                    // 只赋值对应语言的纯文本，无任何拼接/并列
+                    element.textContent = lang[targetLang][elementId];
                 }
             });
         }
 
-        // 绑定按钮点击事件
-        cnBtn.addEventListener('click', () => switchLanguage('cn'));
-        enBtn.addEventListener('click', () => switchLanguage('en'));
+        // 绑定点击事件：点击中文→纯中文，点击英文→纯英文
+        zhBtn.addEventListener('click', () => switchToLanguage('zh'));
+        enBtn.addEventListener('click', () => switchToLanguage('en'));
 
-        // 初始化默认显示中文
-        switchLanguage('cn');
+        // 页面加载完成：默认显示纯中文（无任何英文）
+        document.addEventListener('DOMContentLoaded', () => {
+            switchToLanguage('zh');
+        });
     </script>
 </body>
 </html>
