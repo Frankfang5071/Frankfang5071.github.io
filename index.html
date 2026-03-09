@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人主页 | Personal Homepage</title>
+    <style>
+        /* 全局样式重置与基础设置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Times New Roman", Times, serif, "Microsoft YaHei";
+        }
+
+        body {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 50px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        /* 语言切换按钮样式 */
+        .language-switch {
+            text-align: right;
+            margin-bottom: 30px;
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            margin-left: 10px;
+            border: 1px solid #666;
+            border-radius: 4px;
+            background-color: #fff;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+
+        .lang-btn.active {
+            background-color: #333;
+            color: #fff;
+            border-color: #333;
+        }
+
+        .lang-btn:hover:not(.active) {
+            background-color: #eee;
+        }
+
+        /* 头部基本信息样式 */
+        .basic-info {
+            border-bottom: 2px solid #333;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .basic-info h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .basic-info .sub-info {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+
+        /* 各模块通用样式 */
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            border-left: 5px solid #333;
+            padding-left: 10px;
+        }
+
+        .section-content {
+            padding-left: 15px;
+        }
+
+        /* 技能模块样式 */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .skill-tag {
+            background-color: #eee;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 14px;
+        }
+
+        /* 教育经历样式 */
+        .education-item {
+            margin-bottom: 10px;
+        }
+
+        .education-item .time {
+            font-style: italic;
+            color: #666;
+            margin-left: 10px;
+        }
+
+        /* 最后更新日期样式 */
+        .update-date {
+            margin-top: 40px;
+            font-size: 14px;
+            color: #666;
+            text-align: right;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 语言切换按钮 -->
+    <div class="language-switch">
+        <button class="lang-btn active" id="cn-btn">中文</button>
+        <button class="lang-btn" id="en-btn">English</button>
+    </div>
+
+    <!-- 基本信息模块 -->
+    <div class="basic-info">
+        <h1 data-lang="name">张三 <!-- 替换：你的中文姓名 --> | Zhang San <!-- 替换：你的英文姓名 --></h1>
+        <p class="sub-info" data-lang="school">XX大学 XX学院 XX专业 <!-- 替换：中文学校/专业 --> | XX University, XX College, XX Major <!-- 替换：英文学校/专业 --></p>
+        <p class="sub-info" data-lang="direction">研究方向：XX领域 <!-- 替换：中文研究/职业方向 --> | Research Interests: XX Field <!-- 替换：英文研究/职业方向 --></p>
+        <p class="sub-info" data-lang="email">邮箱：zhangsan@example.com <!-- 替换：你的邮箱 --> | Email: zhangsan@example.com <!-- 替换：你的邮箱（英文可与中文一致） --></p>
+    </div>
+
+    <!-- 个人简介 + 技能模块 -->
+    <div class="section">
+        <h2 data-lang="intro-title">个人简介 & 技能 <!-- 固定文字，无需替换 --> | About Me & Skills <!-- 固定文字，无需替换 --></h2>
+        <div class="section-content">
+            <p data-lang="intro-content">
+                我是XX大学的一名XX专业研究生/本科生，主要从事XX方向的研究，具备XX等方面的能力，参与过XX项目，熟悉XX技术。 <!-- 替换：中文个人简介 -->
+                |
+                I am a graduate/undergraduate student in XX major at XX University, mainly engaged in research in the field of XX, with capabilities in XX, participated in XX projects, and familiar with XX technologies. <!-- 替换：英文个人简介 -->
+            </p>
+            <div class="skills">
+                <span class="skill-tag" data-lang="skill1">Python编程 <!-- 替换：中文技能1 --> | Python Programming <!-- 替换：英文技能1 --></span>
+                <span class="skill-tag" data-lang="skill2">机器学习 <!-- 替换：中文技能2 --> | Machine Learning <!-- 替换：英文技能2 --></span>
+                <span class="skill-tag" data-lang="skill3">数据分析 <!-- 替换：中文技能3 --> | Data Analysis <!-- 替换：英文技能3 --></span>
+                <!-- 可按需添加更多技能标签，复制上面一行即可 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 教育/课程经历模块 -->
+    <div class="section">
+        <h2 data-lang="edu-title">教育/课程经历 <!-- 固定文字，无需替换 --> | Education & Course Experience <!-- 固定文字，无需替换 --></h2>
+        <div class="section-content">
+            <div class="education-item">
+                <span data-lang="edu1">XX大学 XX专业 硕士/本科 <!-- 替换：中文教育经历1 --></span>
+                <span class="time" data-lang="edu1-time">2020-2024 <!-- 替换：时间 --></span>
+                <span data-lang="edu1-en">Master/Bachelor of XX, XX University <!-- 替换：英文教育经历1 --></span>
+            </div>
+            <div class="education-item">
+                <span data-lang="edu2">核心课程：XX、XX、XX <!-- 替换：中文核心课程 --></span>
+                <span data-lang="edu2-en">Core Courses: XX, XX, XX <!-- 替换：英文核心课程 --></span>
+            </div>
+            <!-- 可按需添加更多教育/课程经历，复制上面的 education-item 块即可 -->
+        </div>
+    </div>
+
+    <!-- 最后更新日期 -->
+    <div class="update-date" data-lang="update-date">
+        最后更新：2024年X月X日 <!-- 替换：中文更新日期 --> | Last Updated: Month X, 2024 <!-- 替换：英文更新日期 -->
+    </div>
+
+    <script>
+        // 获取语言切换按钮和所有带翻译的元素
+        const cnBtn = document.getElementById('cn-btn');
+        const enBtn = document.getElementById('en-btn');
+        const langElements = document.querySelectorAll('[data-lang]');
+
+        // 语言切换逻辑
+        function switchLanguage(lang) {
+            // 更新按钮样式
+            cnBtn.classList.toggle('active', lang === 'cn');
+            enBtn.classList.toggle('active', lang === 'en');
+
+            // 遍历所有带翻译的元素，切换显示对应语言
+            langElements.forEach(element => {
+                const textContent = element.textContent;
+                const [cnText, enText] = textContent.split('|').map(t => t.trim());
+                
+                if (lang === 'cn') {
+                    element.textContent = cnText;
+                } else {
+                    element.textContent = enText;
+                }
+            });
+        }
+
+        // 绑定按钮点击事件
+        cnBtn.addEventListener('click', () => switchLanguage('cn'));
+        enBtn.addEventListener('click', () => switchLanguage('en'));
+
+        // 初始化默认显示中文
+        switchLanguage('cn');
+    </script>
+</body>
+</html>
